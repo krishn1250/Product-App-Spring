@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Signup</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .error {
+        color: red;
+        font-size: 0.8em;
+    }
+
+    .login-link {
+        text-align: center;
+    }
+
+    .login-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Student Signup</h2>
+    <form id="signupForm" action="/signup" method="post">
+        <input type="text" id="FullName" name="FullName" placeholder="FullName" required>
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        <input type="submit" value="Sign Up">
+        <div class="error" id="errorMsg"></div>
+    </form>
+    <div class="login-link">
+        <a href="login.html" id="loginLink">Back to Login</a>
+    </div>
+</div>
+
+<script>
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        if (password !== confirmPassword) {
+            e.preventDefault();
+            document.getElementById("errorMsg").innerText = "Passwords do not match";
+        }
+    });
+
+    document.getElementById("loginLink").addEventListener("click", function(e) {
+        e.preventDefault();
+        window.location.href = "login.html"; // Replace with the actual login page URL
+    });
+</script>
+</body>
+</html>
